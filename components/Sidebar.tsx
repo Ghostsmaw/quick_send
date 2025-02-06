@@ -11,7 +11,7 @@ const Sidebar = ({ user }: SiderbarProps) => {
   return (
     <section className="sidebar">
       <nav className="flex flex-col gap-4">
-        <Link href="/" className="mb-12 cursor-pointer items-center gap-2">
+        <Link href="/" className="mb-12 flex cursor-pointer items-center gap-2 pr-5">
           <Image
             src="/icons/logo.svg"
             width={34}
@@ -39,6 +39,14 @@ const Sidebar = ({ user }: SiderbarProps) => {
                   className={cn({ "brightness-[3] invert-0": isActive })}
                 />
               </div>
+              <p className={cn('sidebar-label', {'!text-white': isActive})}>
+                {item.label}
+                {isActive && (
+                  <span className="absolute bottom-0 right-0 ml-2 text-xs text-white bg-indigo-500 p-1 rounded-full">
+                    Active
+                  </span>
+                )}
+              </p>
             </Link>
           );
         })}
